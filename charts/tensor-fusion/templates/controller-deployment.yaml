@@ -90,6 +90,10 @@ spec:
               mountPath: /etc/tensor-fusion/config.yaml
               subPath: config.yaml
               readOnly: true
+            - name: rules
+              mountPath: /etc/tensor-fusion/rules.yaml
+              subPath: rules.yaml
+              readOnly: true
         {{- if .Values.agent.agentId }}
         - name: cluster-agent
           image: "{{ .Values.agent.image.repository }}:{{ .Values.agent.image.tag | default "latest" }}"
@@ -166,6 +170,10 @@ spec:
             defaultMode: 420
             name: {{ .Release.Name }}-public-gpu-info
           name: gpu-info
+        - configMap:
+            defaultMode: 420
+            name: {{ .Release.Name }}-rules
+          name: rules         
         - configMap:
             defaultMode: 420
             name: {{ .Release.Name }}-config

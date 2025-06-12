@@ -282,8 +282,8 @@ dynamicConfig:
       consecutiveCount: 2
       severity: P0
       summary: "Available TFlops below threshold, remaining {{ .tflops_available }}% for {{ .node_name }}"
-      description: "Node {{ .node _name }} in Pool {{ .pool }} has available TFlops below {{ .Threshold }}%"
-      alertTargetInstance: "{{ .node _name }}"
+      description: "Node {{ .node_name }} in Pool {{ .pool }} has available TFlops below {{ .Threshold }}%"
+      alertTargetInstance: "{{ .node_name }}"
     
     - name: NodeTFlopsAllocationWarning
       query: | 
@@ -297,8 +297,8 @@ dynamicConfig:
       consecutiveCount: 2
       severity: P1
       summary: "Node available TFlops below threshold, remaining {{ .tflops_available }}% for {{ .node_name }}"
-      description: "Node {{ .node _name }} in Pool {{ .pool }} has available TFlops below {{ .Threshold }}%"
-      alertTargetInstance: "{{ .node _name }}"
+      description: "Node {{ .node_name }} in Pool {{ .pool }} has available TFlops below {{ .Threshold }}%"
+      alertTargetInstance: "{{ .node_name }}"
     
     # Pool TFlops allocation alert - Total
     - name: PoolTotalTFlopsAllocationCritical
@@ -344,8 +344,8 @@ dynamicConfig:
       consecutiveCount: 2
       severity: P1
       summary: "Node available VRAM below threshold, remaining {{ .vram_available }}% for {{ .node_name }}"
-      description: "Node {{ .node _name }} in Pool {{ .pool }} has available VRAM below {{ .Threshold }}%"
-      alertTargetInstance: "{{ .node _name }}"
+      description: "Node {{ .node_name }} in Pool {{ .pool }} has available VRAM below {{ .Threshold }}%"
+      alertTargetInstance: "{{ .node_name }}"
 
     - name: NodeVRAMAllocationWarning
       query: |
@@ -359,8 +359,8 @@ dynamicConfig:
       consecutiveCount: 2
       severity: P1
       summary: "Node available VRAM below threshold, remaining {{ .vram_available }}% for {{ .node_name }}"
-      description: "Node {{ .node _name }} in Pool {{ .pool }} has available VRAM below {{ .Threshold }}%"
-      alertTargetInstance: "{{ .node _name }}"
+      description: "Node {{ .node_name }} in Pool {{ .pool }} has available VRAM below {{ .Threshold }}%"
+      alertTargetInstance: "{{ .node_name }}"
     
     # Pool VRAM allocation alert
     - name: PoolVRAMAllocationWarning
@@ -388,7 +388,7 @@ dynamicConfig:
             FROM tf_worker_usage 
             WHERE {{ .Conditions }}
         )
-      threshold: N/A
+      threshold: 0
       evaluationInterval: 5m
       consecutiveCount: 2
       severity: P2
